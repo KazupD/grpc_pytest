@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package PoseService;
+
+// Define the gRPC service
+service PoseService {
+  // RPC method for sending coordinates and receiving a response
+  rpc SendCoordinates (CoordinatesRequest) returns (CoordinatesResponse);
+}
+
+// Message to send position and orientation coordinates
+message CoordinatesRequest {
+  // 3 position coordinates
+  float position_x = 1;
+  float position_y = 2;
+  float position_z = 3;
+
+  // 3 orientation coordinates
+  float orientation_roll = 4;
+  float orientation_pitch = 5;
+  float orientation_yaw = 6;
+}
+
+// Message to receive a string response
+message CoordinatesResponse {
+  string message = 1;
+}
